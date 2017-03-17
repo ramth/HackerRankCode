@@ -1,0 +1,68 @@
+/*
+    Insert Node in a doubly sorted linked list 
+    After each insertion, the list should be sorted
+   Node is defined as
+   struct Node
+   {
+     int data;
+     Node *next;
+     Node *prev;
+   }
+*/
+Node* SortedInsert(Node *head,int data)
+{
+    // Complete this function
+   // Do not write the main method.
+    Node *nodeP = head;
+    Node *nodePP = NULL;// = NULL;
+    Node* inserted = (struct Node*) malloc(sizeof(struct Node));
+    (*inserted).data = data;
+    
+    
+    if (nodeP == NULL) {
+        //Empty list case
+        (*inserted).prev = NULL;
+        (*inserted).next = NULL;
+        //cout << "Woah";
+        //head = inserted;
+        return inserted;
+    } 
+    else {
+        while ((*nodeP).data <= data)
+        {
+           // cout<<"ok";
+            nodePP = nodeP;
+            nodeP = (*nodeP).next;
+            
+            if (nodeP == NULL){break;}
+        }
+        //should stop when nodeP.data > data or end of list
+        if (nodeP == NULL){
+            //cout << "Woah1";
+            //Insert at end of list
+            (*inserted).next = NULL;
+            (*inserted).prev = nodePP;
+            (*nodePP).next = inserted;
+            return head;
+        }
+        else if (nodePP == NULL) {
+            //cout << "woah3";
+            //Insert at beginning of list
+            (*inserted).next = nodeP;
+            (*inserted).prev = NULL;
+            (*nodeP).prev = inserted;
+            return inserted;
+        }
+        else{
+            //cout << "woah2";
+            //Insert in middle of list
+            (*inserted).next = nodeP;
+            (*inserted).prev = nodePP;
+            (*nodePP).next = inserted;
+            (*nodeP).prev = inserted;
+            return head;
+        }
+       
+    }
+    
+}
