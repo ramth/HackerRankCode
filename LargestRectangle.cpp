@@ -1,7 +1,13 @@
+/*
+
+Refer to problem here : https://www.hackerrank.com/challenges/largest-rectangle
+
+*/
 #include <cmath>
 #include <cstdio>
 #include <vector>
 #include <iostream>
+#include<sstream>
 #include <algorithm>
 using namespace std;
 
